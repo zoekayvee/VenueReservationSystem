@@ -4,10 +4,44 @@
 <head>
   <title>Venues</title>
   <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/semantic.css">
+  <link rel='stylesheet prefetch' href='semantic/components/icon.min.css'>
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
 </head>
 
 <body>
-  <div ng-view></div>
+  
+  <!-- Sidebar -->
+  <div class="ui grid">
+      <div class="three wide column">
+        <div class="ui left wide sidebar visible inverted vertical menu">
+          <h2 class="image header">
+            <img class="ui centered small circular image" src="pictures/patrick.png">
+          </h2>
+          <a class="item" href="/">
+            Home
+          </a>
+          <a class="item" href="/#/events">
+            Profile
+          </a>
+          <a class="item" href="/#/events">
+            Events
+          </a>
+          <a class="item" href="/#/venues">
+            Venues
+          </a>
+          <a class="item">
+            Logout
+          </a>
+        </div>
+      </div>
+
+    <div class="twelve wide column centered">
+      <!-- Site content !-->
+      <div ng-view></div>
+    </div>
+  </div>
   
   <script src="/jquery-3.1.1.js"></script>
   <script src="angular.js"></script>

@@ -1,3 +1,18 @@
+
+<div class="ui menu">
+  <div class="item">
+    <h1 class="ui header">Venues</h1>
+  </div>
+  <div class="item">
+    <div class="ui button">Add Venue</div>
+  </div>
+  <div class="ui left icon input">
+    <input type="text" placeholder="Search...">
+    <i class="search icon"></i>
+  </div>
+</div>
+
+<!-- 
 <form>
   <label for="name-input">Venue Name</label>
   <input type="text" ng-model="venue.newVenue.venuename">
@@ -6,10 +21,31 @@
   <label for="details-input">Details</label>
   <input type="text" ng-model="venue.newVenue.venuedetails">
   <input type="submit" ng-click = "venue.addVenue()"></input>
-</form>
+</form> -->
 
-<ul>
-  <li ng-repeat="x in venue.venue">
-        {{x.venueid}}. {{x.venuename}} - {{x.venuecapacity}} - {{x.venuedetails}}
-  </li>
-</ul>
+<div class>
+
+<div class="ui four column stackable grid">
+<div class="column" ng-repeat="x in venue.venue">
+  <div class="ui fluid card">  
+    <div class="content">
+      <div class="header">    
+        {{x.venuename}}
+      </div>
+      <div class="meta">
+      Capacity: {{x.venuecapacity}}
+      </div> 
+      <div class="description">
+      {{x.venuedetails}}
+      </div>
+    </div>
+
+    <div class="extra content">
+      <div class="ui two buttons">
+        <div class="ui basic green button">Reserve</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
