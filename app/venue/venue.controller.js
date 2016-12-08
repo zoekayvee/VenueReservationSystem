@@ -8,13 +8,13 @@
 		var vm = this;
 
 	      vm.newVenue = {};
-	      vm.venue = [];
+	      vm.venues = [];
 	      vm.addVenue = addVenue;
 	      
 	      $http.get('/venues').then(
 	        function(response){
 	          if (response.data){
-	            vm.venue = response.data;
+	            vm.venues = response.data;
 	          }
 	        }
 	      )
@@ -29,15 +29,13 @@
 	                "venuecapacity": vm.newVenue.venuecapacity,
 	                "venuedetails": vm.newVenue.venuedetails
 	              }
-	              vm.venue.push(insertedVenue);
-	              console.log(response.data);
-	              console.log("Successfully added");
+	              vm.venues.push(insertedVenue);
 	              vm.newVenue = {};
 	            },
 	            function(response){
 	              console.log("Error. Venue cannot be added!");
 	            }
-	          )
+	          );
 	      }
 	}
 })();
