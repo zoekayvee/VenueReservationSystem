@@ -1,0 +1,14 @@
+#login-header {
+    min-height: 700px;
+    margin: 0 0 0 0 !important;
+    background-image:  url("../pictures/party.jpg");
+    background-position: 0px -200px;
+}
+
+#login-eventsinfo {
+	min-height: 700px;
+}
+
+#grid-margin {
+	margin-top: 115px;
+}
