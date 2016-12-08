@@ -16,18 +16,18 @@
 				$http.get('/users/' + response.data)
 						.then(function(response){
 							vm.currentUser = response.data;
+						      $http.get('/events').then(
+						        function(response){
+						          if (response.data){
+						            vm.userEvents = response.data.filter(event=>{
+						            	return vm.currentUser.accountid==event.accountid;
+						            });
+						          }
+						        }
+						      )
 						});
 			});
 	      
-	      $http.get('/events').then(
-	        function(response){
-	          if (response.data){
-	            vm.userEvents = response.data.filter(event=>{
-	            	return currentUser.userid==event.userid;
-	            });
-	          }
-	        }
-	      )
 
 	}
 })();
