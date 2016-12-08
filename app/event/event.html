@@ -1,5 +1,47 @@
+<div class="row">
+    <div class="column">
+      <h1 class="ui centered header">Events</h1>
+    </div>
+</div>
+
+<div class="ui menu">
+  <div class="item">
+    <div class="ui button">Add Event</div>
+  </div>
+  <div class="item">
+    <div class="ui action input">
+      <input type="text" placeholder="Search...">
+      <select class="ui compact selection dropdown">
+        <option value="all">Event Name</option>
+        <option value="articles">Capacity</option>
+        <option value="products">Description</option>
+      </select>
+      <div type="submit" class="ui button">Search</div>
+    </div>
+  </div>
+</div>
+
+<div class="ui four column stackable grid">
+<div class="column" ng-repeat="x in event.event">
+	<div class="ui fluid card">
+	  <div class="content">
+	    <div class="header">{{x.eventname}}</div>
+	    <div class="meta">{{x.eventdate}}</div>
+	    <div class="description">
+	      <p>{{x.eventdetails}}</p>
+	    </div>
+	  </div>
+	  <div class="extra content">
+	    <i class="check icon"></i>
+	    {{x.eventstarttime}} to {{x.eventendtime}}
+	  </div>
+	</div>
+</div>
+</div>
+
+
 <ul>
-  <li ng-repeat="x in event.event">
+  <li ng-repeat="x in event.events">
         {{x.eventid}}. {{x.userid}} - {{x.eventname}} - {{x.eventdetails}} - {{x.eventdate}} - {{x.eventstarttime}} to {{x.eventendtime}} - {{x.eventtype}}
   </li>
 </ul>

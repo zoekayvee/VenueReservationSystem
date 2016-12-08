@@ -19,6 +19,8 @@
 	      vm.addVenue = addVenue;
 				vm.deleteVenue = deleteVenue;
 				vm.searchVenue = searchVenue;
+
+		  vm.openModal = openModal;
 	      
 	      $http.get('/venues').then(
 	        function(response){
@@ -108,5 +110,19 @@
 					else
 						vm.accounttype = 'admin';
 				}
+
+		function openModal() {
+			 $('.ui.modal')
+			 	.modal('setting', {
+					 closable: true
+				})
+				.modal('show');
+		 }
+		 
+		 // function closeModal() {
+			//  $('.ui.modal')
+			//  	.modal('hide');
+			// vm.newUser = {};	
+		 // }
 	}
 })();

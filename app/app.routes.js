@@ -18,6 +18,11 @@
 					templateUrl: '/user/user.html',
 					controller: 'userController',
 					controllerAs: 'user'
+				})
+				.when('/profile',{
+					templateUrl: '/profile/profile.html',
+					controller: 'profileController',
+					controllerAs: 'profile'
 				});
 		});
 })();

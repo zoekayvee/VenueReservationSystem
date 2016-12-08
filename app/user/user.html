@@ -1,5 +1,45 @@
-<ul>
-  <li ng-repeat="x in user.user">
-        {{x.userid}}. {{x.username}} - {{x.password}} - {{x.firstname}} - {{x.lastname}} - {{x.contactno}} - {{x.address}} - {{x.email}} - {{x.dateadded}}
-  </li>
-</ul>
+<div class="row">
+    <div class="column">
+      <h1 class="ui centered header">Users</h1>
+    </div>
+</div>
+
+<div class="ui menu">
+  <div class="item">
+    <div class="ui action input">
+      <input type="text" placeholder="Search...">
+      <select class="ui compact selection dropdown">
+        <option value="username">Username</option>
+        <option value="name">Name</option>
+        <option value="contactno">Contact Number</option>
+        <option value="email">E-mail</option>
+        <option value="address">Address</option>
+        <option value="dateadded">Date Added</option>
+      </select>
+      <div type="submit" class="ui button">Search</div>
+    </div>
+  </div>
+</div>
+
+<div class="ui link cards">
+	<div class="card" ng-repeat="x in user.user">
+		<div class="image">
+			<img src="pictures/patrick.png">
+		</div>
+		<div class="content">
+			<div class="header">{{x.username}}</div>
+			<div class="meta">{{x.lastname}}, {{x.firstname}}</div>
+			<div class="description">
+		       <p>Contact Number: {{x.contactno}}</p>
+		       <p>E-mail: {{x.email}}</p>
+		       <p>Address: {{x.address}}</p>
+		    </div>
+		</div>
+		<div class="extra content">
+			<span class="left floated"> {{x.dateadded}} </span>
+			<span class="right floated">
+				<button class="ui teal button">Edit</button>
+			</span>
+		</div>
+	</div>
+</div>
