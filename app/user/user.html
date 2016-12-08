@@ -38,8 +38,58 @@
 		<div class="extra content">
 			<span class="left floated"> {{x.dateadded}} </span>
 			<span class="right floated">
-				<button class="ui teal button">Edit</button>
+				<button class="ui teal button" ng-click="user.editUser(x)">Edit</button>
 			</span>
 		</div>
 	</div>
+</div>
+
+<div class="ui modal" id="editUser-modal">
+    <div class="header">Edit User</div>
+    <div class="content">        
+      <form>
+        <div class="ui form">
+			  <div class="fields">
+			    <div class="field">
+			      <label>Username</label>
+			      <input type="text" placeholder="Username" ng-model="user.userToBeEdited.username">
+			    </div>
+			    <div class="field">
+			      <label>Password</label>
+			      <input type="password" placeholder="Password" ng-model="user.userToBeEdited.password">
+			    </div>
+			  </div>
+			  <div class="equal width fields">
+			    <div class="field">
+			      <label>First name</label>
+			      <input type="text" placeholder="First Name" ng-model="user.userToBeEdited.firstname">
+			    </div>
+			    <div class="field">
+			      <label>Middle name</label>
+			      <input type="text" placeholder="Middle Name" ng-model="user.userToBeEdited.middlename">
+			    </div>
+			    <div class="field">
+			      <label>Last name</label>
+			      <input type="text" placeholder="Last Name" ng-model="user.userToBeEdited.lastname">
+			    </div>  
+			  </div>
+			  <div class="ui equal width form">
+			  <div class="fields">
+			    <div class="field">
+				    <label>E-mail</label>
+				    <input type="email" placeholder="sample@sample.com" ng-model="user.userToBeEdited.email">
+			    </div>
+			    <div class="field">
+			      <label>Contact Number</label>
+			      <input type="text" placeholder="XXXXXXXXXXX" ng-model="user.userToBeEdited.contactno">
+			    </div>
+			  </div>
+			  <div class="fluid field">
+			      <label>Address</label>
+			      <input type="text" placeholder="Address" ng-model="user.userToBeEdited.address">
+			    </div>
+			  </div>
+			</div>
+      </form>
+    </div>
 </div>
