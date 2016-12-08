@@ -4,17 +4,17 @@
   <div class="item">
     <div class="ui button">Add Venue</div>
   </div>
-  <div class="item">
+  <form class="item" ng-submit="venue.searchVenue()">
     <div class="ui action input">
-      <input type="text" placeholder="Search...">
-      <select class="ui compact selection dropdown">
-        <option value="all">Venue Name</option>
-        <option value="articles">Capacity</option>
-        <option value="products">Description</option>
+      <input type="text" placeholder="Search..." ng-model="venue.searchFilter">
+      <select class="ui compact selection dropdown" ng-model="venue.searchCategory">
+        <option value="venuename">Venue Name</option>
+        <option value="venuecapacity">Capacity</option>
+        <option value="venuedetails">Description</option>
       </select>
       <div type="submit" class="ui button">Search</div>
     </div>
-  </div>
+  </form>
 
 
 <!-- 

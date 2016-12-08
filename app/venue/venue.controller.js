@@ -10,7 +10,7 @@
 	      vm.newVenue = {};
 	      vm.venues = [];
 				vm.allVenues = [];
-				vm.searchCategory = '';
+				vm.searchCategory = 'venuename';
 				vm.searchFilter = '';
 
 	      vm.addVenue = addVenue;
@@ -44,16 +44,20 @@
 	      }
 
 				function searchVenue() {
-						vm.venues = vm.allVenues.filter(venue => {
-								// for numbers, exact searching
-								if (!isNaN(venue[vm.searchCategory])) {
-									return venue[vm.searchCategory] == vm.searchFilter;
-								} 
-								// for strings, basta includes
-								else {
-									return venue[vm.searchCategory].toLowerCase().includes(vm.searchFilter.toLowerCase());
-								}
-						});
+						if (vm.searchFilter === '') {
+							vm.venues = vm.allVenues;
+						} else {
+							vm.venues = vm.allVenues.filter(venue => {
+									// for numbers, exact searching
+									if (!isNaN(venue[vm.searchCategory])) {
+										return venue[vm.searchCategory] == vm.searchFilter;
+									} 
+									// for strings, basta includes
+									else {
+										return venue[vm.searchCategory].toLowerCase().includes(vm.searchFilter.toLowerCase());
+									}
+							});
+						}
 				}
 	}
 })();
