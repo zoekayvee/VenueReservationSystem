@@ -77,7 +77,7 @@ exports.updateUser=(req, res)=>{
     approved: req.body.approved
   };
 
-  c.query('UPDATE user SET password=:password, accounttype=:accounttype, firstname=:firstname, middlename=:middlename, lastname=:lastname, contactno=:contactno, address=:address, email=:email, dateadded=:dateadded, approved=:approved WHERE accountid=:accountid', updateUser, function(err,rows){
+  c.query('UPDATE user SET username=:username, password=:password, accounttype=:accounttype, firstname=:firstname, middlename=:middlename, lastname=:lastname, contactno=:contactno, address=:address, email=:email, dateadded=:dateadded, approved=:approved WHERE accountid=:accountid', updateUser, function(err,rows){
     if (err){
       console.log(err);
     } else {
