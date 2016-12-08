@@ -1,5 +1,51 @@
-<div class="row">
-    <div class="column">
-      <h1 class="ui header">{{profile.currentUser.firstname}}</h1>
+<div class="ui padded segment">
+    <div class="ui column">
+      <h1 class="ui header">{{profile.currentUser.firstname}} {{profile.currentUser.lastname}}</h1>
     </div>
 </div>
+
+<table class="ui fixed inverted table">
+  <thead>
+    <tr>
+    	<th colspan="2">It's All About Me!</th>
+  	</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Username</td>
+      <td>{{profile.currentUser.username}}</td>
+    </tr>
+    <tr>
+      <td>E-Mail</td>
+      <td>{{profile.currentUser.email}}</td>
+    </tr>
+    <tr>
+      <td>Contact Number</td>
+      <td>{{profile.currentUser.contactno}}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{profile.currentUser.address}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="ui header">Your Events</h3>
+<div class="ui four column stackable grid">
+<div class="column" ng-repeat="x in profile.userEvents">
+	<div class="ui fluid card">
+	  <div class="content">
+	    <div class="header">{{x.eventname}}</div>
+	    <div class="meta">{{x.eventdate}}</div>
+	    <div class="description">
+	      <p>{{x.eventdetails}}</p>
+	    </div>
+	  </div>
+	  <div class="extra content">
+	    <i class="check icon"></i>
+	    {{x.eventstarttime}} to {{x.eventendtime}}
+	  </div>
+	</div>
+</div>
+</div>
+

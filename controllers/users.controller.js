@@ -1,7 +1,7 @@
 var c = require('../db-connection');
 
 exports.loginUser=(req, res)=>{
-	c.query('SELECT accountid, username, password FROM user WHERE username = ?', [req.body.username], function(err, rows){
+	c.query('SELECT accountid, username, password FROM user WHERE username = ? AND approved=1', [req.body.username], function(err, rows){
 		if (err) throw err;
 		if (rows[0] && rows[0].password === req.body.password){
 			req.session.accountid = rows[0].accountid;
@@ -72,14 +72,14 @@ exports.updateUser=(req, res)=>{
     contactno: req.body.contactno,
     address: req.body.address,
     email: req.body.email,
-    dateadded: req.body.dateadded
+    dateadded: req.body.dateadded,
+    approved: req.body.approved
   };
 
-  c.query('UPDATE user SET password=:password, accounttype=:accounttype, firstname=:firstname, middlename=:middlename, lastname=:lastname, contactno=:contactno, address=:address, email=:email, dateadded=:dateadded WHERE accountid=:accountid', updateUser, function(err,rows){
+  c.query('UPDATE user SET password=:password, accounttype=:accounttype, firstname=:firstname, middlename=:middlename, lastname=:lastname, contactno=:contactno, address=:address, email=:email, dateadded=:dateadded, approved=:approved WHERE accountid=:accountid', updateUser, function(err,rows){
     if (err){
       console.log(err);
     } else {
-      console.log(results);
       res.send(req.body);
     }
   });

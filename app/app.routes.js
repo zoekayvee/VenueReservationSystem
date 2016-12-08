@@ -19,6 +19,11 @@
 					controller: 'userController',
 					controllerAs: 'user'
 				})
+				.when('/requests',{
+					templateUrl: '/request/request.html',
+					controller: 'requestController',
+					controllerAs: 'request'
+				})
 				.when('/profile',{
 					templateUrl: '/profile/profile.html',
 					controller: 'profileController',

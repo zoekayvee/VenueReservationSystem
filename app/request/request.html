@@ -1,0 +1,31 @@
+<div class="ui padded segment">
+    <div class="ui column">
+      <h1 class="ui header">Requests</h1>
+    </div>
+</div>
+
+<h2 class="ui header">User Requests</h2>
+<div class="ui link cards">
+	<div class="card" ng-repeat="x in request.approveUsers">
+		<div class="image">
+			<img src="pictures/patrick.png">
+		</div>
+		<div class="content">
+			<div class="header">{{x.username}}</div>
+			<div class="meta">{{x.lastname}}, {{x.firstname}}</div>
+			<div class="description">
+		       <p>Contact Number: {{x.contactno}}</p>
+		       <p>E-mail: {{x.email}}</p>
+		       <p>Address: {{x.address}}</p>
+		    </div>
+		</div>
+		<div class="extra content">
+			<span class="left floated"> {{x.dateadded}} </span>
+			<span class="right floated">
+				<button class="ui teal button" ng-click=request.approveUser(x)>Approve</button>
+			</span>
+		</div>
+	</div>
+</div>
+
+<h2 class="ui header">Event Requests</h2>

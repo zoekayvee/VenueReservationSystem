@@ -2,12 +2,13 @@
 	'use strict'
 	angular
 		.module('mainApp')
-		.controller('profileController', userController);
+		.controller('profileController', profileController);
 
-	function userController($http){
+	function profileController($http){
 		var vm = this;
 
 		vm.currentUser = {};
+		vm.userEvents = [];
 
 		$http
 			.get('/loggedIn')
@@ -17,6 +18,16 @@
 							vm.currentUser = response.data;
 						});
 			});
+	      
+	      $http.get('/events').then(
+	        function(response){
+	          if (response.data){
+	            vm.userEvents = response.data.filter(event=>{
+	            	return currentUser.userid==event.userid;
+	            });
+	          }
+	        }
+	      )
 
 	}
 })();
