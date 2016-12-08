@@ -9,18 +9,23 @@
 
 	      vm.newVenue = {};
 	      vm.venues = [];
+				vm.allVenues = [];
+				vm.searchCategory = '';
+				vm.searchFilter = '';
+
 	      vm.addVenue = addVenue;
+				vm.searchVenue = searchVenue;
 	      
 	      $http.get('/venues').then(
 	        function(response){
 	          if (response.data){
 	            vm.venues = response.data;
+							vm.allVenues = vm.venues;
 	          }
 	        }
 	      )
 	    
 	      function addVenue(){
-	        console.log(vm.newVenue);
 	        $http.post('/venues', vm.newVenue).then(
 	            function(response){
 	              var insertedVenue = {
@@ -29,7 +34,7 @@
 	                "venuecapacity": vm.newVenue.venuecapacity,
 	                "venuedetails": vm.newVenue.venuedetails
 	              }
-	              vm.venues.push(insertedVenue);
+	              vm.allVenues.push(insertedVenue);
 	              vm.newVenue = {};
 	            },
 	            function(response){
@@ -37,5 +42,18 @@
 	            }
 	          );
 	      }
+
+				function searchVenue() {
+						vm.venues = vm.allVenues.filter(venue => {
+								// for numbers, exact searching
+								if (!isNaN(venue[vm.searchCategory])) {
+									return venue[vm.searchCategory] == vm.searchFilter;
+								} 
+								// for strings, basta includes
+								else {
+									return venue[vm.searchCategory].toLowerCase().includes(vm.searchFilter.toLowerCase());
+								}
+						});
+				}
 	}
 })();
