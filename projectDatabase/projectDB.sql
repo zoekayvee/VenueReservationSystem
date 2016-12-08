@@ -20,7 +20,7 @@ create table user(
 	accountid int unsigned auto_increment,
 	username varchar(50) not null,
 	password varchar(50) not null,
-	accounttpye varchar(30) not null,
+	accounttype varchar(30) not null,
 	firstname varchar(50) not null,
 	middlename varchar(50),
 	lastname varchar(50) not null,
@@ -148,13 +148,13 @@ create table user_is_maintained_by_admin(
 LOAD DATA LOCAL INFILE 'projectData/user.csv' INTO TABLE user
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' 
 LINES TERMINATED BY '\n'
-IGNORE 1 LINES (username,password,accounttpye,firstname,middlename,lastname,contactno,address,email,dateadded)
+IGNORE 1 LINES (username,password,accounttype,firstname,middlename,lastname,contactno,address,email,dateadded)
 set accountid = NULL;
 
 -- get accountid from each admin in user and insert into user_admin table
-insert into user_admin (accountid) select accountid from user where accounttpye = 'admin';
+insert into user_admin (accountid) select accountid from user where accounttype = 'admin';
 -- get accountid from each normal user in user and insert into user_normal_user table
-insert into user_normal_user (accountid) select accountid from user where accounttpye = 'normal_user';
+insert into user_normal_user (accountid) select accountid from user where accounttype = 'normal_user';
 -- convert string to date and apply to dateadded column
 update user set dateadded = str_to_date(dateadded,"%m/%d/%Y");
 

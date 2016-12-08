@@ -49,7 +49,7 @@ exports.addUser=(req, res)=>{
     dateadded: req.body.dateadded
   }
 
-  c.query('INSERT INTO user VALUES(0, :username, :password, :accounttype, :firstname, :middlename, :lastname, :contactno, :address, :email, :dateadded)', newUser, function(err, results) {
+  c.query('INSERT INTO user VALUES(0, :username, :password, :accounttype, :firstname, :middlename, :lastname, :contactno, :address, :email, :dateadded, 0)', newUser, function(err, results) {
     if (err) {
       console.log(err);
     }

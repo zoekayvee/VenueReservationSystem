@@ -31,7 +31,7 @@
                     <div class = "field">
                     <button class="ui fluid large teal submit button" type="submit" ng-click="login.loginUser()">Login
                     </div>
-                    <button class="ui fluid medium grey submit button" id="openmodal">Sign Up
+                    <button class="ui fluid medium grey submit button" ng-click="login.openModal()">Sign Up
             </form>
             </div>
         </div>
@@ -76,7 +76,7 @@ Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam pellentesqu
                     <h4 class="ui inverted header">Services</h4>
                     <div class="ui inverted link list">
                         <a href="#" class="item">Search for an Event</a>
-                        <a href="#" class="item">Add an Event/a>
+                        <a href="#" class="item">Add an Event</a>
                         <a href="#" class="item">Edit an Event</a>
                         <a href="#" class="item">Search for a Venue</a>
                     </div>
@@ -99,7 +99,7 @@ Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam pellentesqu
         </div>
     </div>
 
-    <div class="ui modal"> <i class="close icon"></i>
+    <div class="ui modal" id="signup-modal">
     <div class="header">Sign Up Sheet</div>
     <div class="content">
         <form ng-controller="loginController as signUp">
@@ -107,47 +107,47 @@ Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam pellentesqu
 			  <div class="fields">
 			    <div class="field">
 			      <label>Username</label>
-			      <input type="text" placeholder="Username" ng-model="signUp.username">
+			      <input type="text" placeholder="Username" ng-model="signUp.newUser.username">
 			    </div>
 			    <div class="field">
 			      <label>Password</label>
-			      <input type="password" placeholder="Password" ng-model="signUp.password">
+			      <input type="password" placeholder="Password" ng-model="signUp.newUser.password">
 			    </div>
 			  </div>
 			  <div class="equal width fields">
 			    <div class="field">
 			      <label>First name</label>
-			      <input type="text" placeholder="First Name" ng-model="signUp.firstname">
+			      <input type="text" placeholder="First Name" ng-model="signUp.newUser.firstname">
 			    </div>
 			    <div class="field">
 			      <label>Middle name</label>
-			      <input type="text" placeholder="Middle Name" ng-model="signUp.middlename">
+			      <input type="text" placeholder="Middle Name" ng-model="signUp.newUser.middlename">
 			    </div>
 			    <div class="field">
 			      <label>Last name</label>
-			      <input type="text" placeholder="Last Name" ng-model="signUp.lastname">
+			      <input type="text" placeholder="Last Name" ng-model="signUp.newUser.lastname">
 			    </div>  
 			  </div>
 			  <div class="ui equal width form">
 			  <div class="fields">
 			    <div class="field">
 				    <label>E-mail</label>
-				    <input type="email" placeholder="sample@sample.com" ng-model="signUp.email">
+				    <input type="email" placeholder="sample@sample.com" ng-model="signUp.newUser.email">
 			    </div>
 			    <div class="field">
 			      <label>Contact Number</label>
-			      <input type="text" placeholder="XXXXXXXXXXX" ng-model="signUp.contactno">
+			      <input type="text" placeholder="XXXXXXXXXXX" ng-model="signUp.newUser.contactno">
 			    </div>
 			  </div>
 			  <div class="fluid field">
 			      <label>Address</label>
-			      <input type="text" placeholder="Address" ng-model="signUp.address">
+			      <input type="text" placeholder="Address" ng-model="signUp.newUser.address">
 			    </div>
 			  </div>
 			</div>
-		    <div class="actions">
-		        <div class="ui button">Cancel</div>
-		        <button class="ui button" type="submit" ng-click="signUp.addUser()">Sign Up
+		    <div class="ui actions">
+		        <div class="ui close button" ng-click="signUp.closeModal()">Cancel</div>
+		        <div class="ui button" type="submit" ng-click="signUp.addUser()">Sign Up</div>
     		</div>
         </form>
 
@@ -161,12 +161,5 @@ Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam pellentesqu
     <script src="app.module.js"></script>
     <script src="angular-route.js"></script>
     <script src="login.controller.js"></script>
-
-    <script type= "text/javascript">
-		$("#openmodal").click(function () {
-   			 $('.ui.modal').modal('show');
-		});
-	</script>
-
 </body>
 </html>
