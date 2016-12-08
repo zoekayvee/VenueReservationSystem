@@ -28,6 +28,7 @@ create table user(
 	address varchar(100),
 	email varchar(100),
 	dateadded varchar(50),
+	approved boolean not null default FALSE,
 	constraint user_accountid_pk primary key(accountid)
 );
 
@@ -56,7 +57,7 @@ create table event(
 	userid int unsigned,
 	accountid int unsigned,
 	eventname varchar(100) not null,
-	eventdetails varchar(500) not null,
+	eventdetails varchar(500),
 	eventdate varchar(50) not null,
 	eventstarttime varchar(30) not null,
 	eventendtime varchar(30) not null,
@@ -73,7 +74,7 @@ create table venue(
 	venueid int unsigned auto_increment,
 	venuename varchar(100) not null,
 	venuecapacity int unsigned not null,
-	venuedetails varchar(500) not null,
+	venuedetails varchar(500),
 	constraint venue_venueid_pk primary key(venueid)
 )auto_increment=1000;
 
