@@ -3,7 +3,6 @@ var c = require('../db-connection');
 exports.loginUser=(req, res)=>{
 	c.query('SELECT accountid, username, password FROM user WHERE username = ?', [req.body.username], function(err, rows){
 		if (err) throw err;
-    console.log(rows[0])
 		if (rows[0] && rows[0].password === req.body.password){
 			req.session.accountid = rows[0].accountid;
 			res.json({ redirect: '/' });
