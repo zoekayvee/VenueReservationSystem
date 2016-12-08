@@ -1,10 +1,11 @@
 var c = require('../db-connection');
 
 exports.loginUser=(req, res)=>{
-	c.query('SELECT username, password FROM user WHERE username = ?', [req.body.username], function(err, rows){
+	c.query('SELECT accountid, username, password FROM user WHERE username = ?', [req.body.username], function(err, rows){
 		if (err) throw err;
+    console.log(rows[0])
 		if (rows[0] && rows[0].password === req.body.password){
-			req.session.username = req.body.username;
+			req.session.accountid = rows[0].accountid;
 			res.json({ redirect: '/' });
       console.log("Success")
 		}else{
@@ -15,7 +16,7 @@ exports.loginUser=(req, res)=>{
 }
 
 exports.logoutUser=(req, res)=>{
-	delete req.session.username;
+	delete req.session.accountid;
 	res.redirect('/login');
 }
 
@@ -28,7 +29,7 @@ exports.getUsers=(req, res)=>{
 }
 
 exports.getUser=(req,res)=>{
-  c.query('SELECT * FROM user WHERE userid = (?)', [req.params.userid], function(err, rows){
+  c.query('SELECT * FROM user WHERE accountid = (?)', [req.params.accountid], function(err, rows){
     if (!err){
       res.send(rows[0]);
     }
@@ -62,7 +63,7 @@ exports.addUser=(req, res)=>{
 
 exports.updateUser=(req, res)=>{
   var updateUser = {
-  	userid: req.body.userid,
+  	accountid: req.body.accountid,
     username: req.body.username,
     password: req.body.password,
     accounttype: req.body.accounttype,
@@ -75,7 +76,7 @@ exports.updateUser=(req, res)=>{
     dateadded: req.body.dateadded
   };
 
-  c.query('UPDATE user SET password=:password, accounttype=:accounttype, firstname=:firstname, middlename=:middlename, lastname=:lastname, contactno=:contactno, address=:address, email=:email, dateadded=:dateadded WHERE userid=:userid', updateUser, function(err,rows){
+  c.query('UPDATE user SET password=:password, accounttype=:accounttype, firstname=:firstname, middlename=:middlename, lastname=:lastname, contactno=:contactno, address=:address, email=:email, dateadded=:dateadded WHERE accountid=:accountid', updateUser, function(err,rows){
     if (err){
       console.log(err);
     } else {
@@ -86,7 +87,7 @@ exports.updateUser=(req, res)=>{
 }
 
 exports.deleteUser=(req,res)=>{
-  c.query('DELETE FROM user WHERE userid = (?)', [req.params.userid], function(err, rows){
+  c.query('DELETE FROM user WHERE accountid = (?)', [req.params.accountid], function(err, rows){
     if (err){
       console.log(err);
     }else{

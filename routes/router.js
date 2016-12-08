@@ -16,7 +16,7 @@ router.post('/register', userController.addUser);
 
 // ALlows user access to other routes if logged in
 router.use(function(req, res, next){
-	if (req.session && req.session.username){
+	if (req.session && req.session.accountid){
 		next();
 	} else {
 		res.redirect('/login');
@@ -36,10 +36,18 @@ router.put('/events/:venueid', eventController.updateEvent);
 router.delete('/events/:venueid', eventController.deleteEvent);
 
 router.get('/users', userController.getUsers);
-router.get('/users/:userid', userController.getUser);
+router.get('/users/:accountid', userController.getUser);
 router.post('/users', userController.addUser);
-router.put('/users/:userid', userController.updateUser);
-router.delete('/users/:userid', userController.deleteUser);
+router.put('/users/:accountid', userController.updateUser);
+router.delete('/users/:accountid', userController.deleteUser);
+
+router.get('/loggedIn', (req, res) => {
+	if (req.session)
+		res.send(req.session.accountid);
+	else
+		res.send({});
+});
+
 
 router.get('/', (req,res)=>{
 	res.sendFile('views/index.html',{root:__dirname+'/..'});

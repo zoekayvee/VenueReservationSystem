@@ -12,8 +12,12 @@
 				vm.allVenues = [];
 				vm.searchCategory = 'venuename';
 				vm.searchFilter = '';
+				vm.accounttype = '';
+
+				vm.switchacct = switchacct;
 
 	      vm.addVenue = addVenue;
+				vm.deleteVenue = deleteVenue;
 				vm.searchVenue = searchVenue;
 	      
 	      $http.get('/venues').then(
@@ -24,6 +28,17 @@
 	          }
 	        }
 	      )
+
+				$http.get('/loggedIn').then(
+					function(response) {
+						$http
+							.get('/users/' + response.data)
+							.then(function(response) {
+								vm.accounttype = response.data.accounttype;
+							});
+					}
+				)
+
 	    
 	      function addVenue(){
 	        $http.post('/venues', vm.newVenue).then(
@@ -43,6 +58,33 @@
 	          );
 	      }
 
+				function editVenue(id) {
+					if (vm.editing) {
+						return
+					}
+
+					vm.editing = true;
+				}
+
+				function deleteVenue(id) {
+					$http
+						.delete('/venues/'+id)
+						.then(function(response) {
+							vm.allVenues = vm.allVenues.filter(venue => {
+								return venue.venueid != id;
+							});
+
+							vm.venues = vm.venues.filter(venue => {
+								return venue.venueid != id;
+							});
+
+
+							console.log('Success deleting venue');
+						}, function(response) {
+							console.log('Error deleting venue');
+						});
+				}
+
 				function searchVenue() {
 						if (vm.searchFilter === '') {
 							vm.venues = vm.allVenues;
@@ -58,6 +100,13 @@
 									}
 							});
 						}
+				}
+
+				function switchacct() {
+					if (vm.accounttype === 'admin')
+						vm.accounttype = 'normal_user';
+					else
+						vm.accounttype = 'admin';
 				}
 	}
 })();

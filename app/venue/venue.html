@@ -1,6 +1,6 @@
 
 <h1 class="ui header">Venues</h1>
-
+  <button ng-click="venue.switchacct()">Switch</button>
   <div class="item">
     <div class="ui button">Add Venue</div>
   </div>
@@ -12,7 +12,7 @@
         <option value="venuecapacity">Capacity</option>
         <option value="venuedetails">Description</option>
       </select>
-      <div type="submit" class="ui button">Search</div>
+      <div type="submit" class="ui button" ng-click="venue.searchVenue()">Search</div>
     </div>
   </form>
 
@@ -27,9 +27,34 @@
   <input type="text" ng-model="venue.newVenue.venuedetails">
   <input type="submit" ng-click = "venue.addVenue()"></input>
 </form> -->
-
-<div class>
-
+<table class="ui table celled selectable">
+  <thead>
+    <tr>
+      <th >Name</th>
+      <th>Capacity</th>
+      <th>Details</th>
+      <th colspan="3" ng-if="venue.accounttype === 'admin'">Actions</th>
+      <th ng-if="venue.accounttype === 'normal_user'">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="x in venue.venues">
+      <td>{{x.venuename}}</td>
+      <td style="text-align: right;">{{x.venuecapacity}}</td>
+      <td>{{x.venuedetails}}</td>
+      <td>
+        <button class="ui green button">Reserve</button>
+      </td>
+      <td ng-if="venue.accounttype === 'admin'">
+        <button class="ui blue button" ng-click="venue.editVenue(x.venueid)">Edit</button>
+      </td>
+      <td ng-if="venue.accounttype === 'admin'">
+        <button class="ui red button" ng-click="venue.deleteVenue(x.venueid)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!--
 <div class="ui four column stackable grid">
 <div class="column" ng-repeat="x in venue.venues">
   <div class="ui fluid card">  
@@ -52,4 +77,4 @@
     </div>
   </div>
 </div>
-</div>
+</div>-->
