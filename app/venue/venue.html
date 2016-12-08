@@ -6,7 +6,7 @@
 
 <button ng-click="venue.switchacct()">Switch</button>
   <div class="item">
-    <button class="ui button" ng-click="venue.openModal()">Add Venue</div>
+    <button class="ui button" ng-click="venue.openModal('addVenue-modal')">Add Venue</div>
   </div>
   <form class="item" ng-submit="venue.searchVenue()">
     <div class="ui action input">
@@ -21,7 +21,6 @@
 
   </form>
 
-
 <table class="ui table celled selectable">
   <thead>
     <tr>
@@ -34,17 +33,63 @@
   </thead>
   <tbody>
     <tr ng-repeat="x in venue.venues">
-      <td>{{x.venuename}}</td>
-      <td style="text-align: right;">{{x.venuecapacity}}</td>
-      <td>{{x.venuedetails}}</td>
+      
+      <!--NORMAL ROWS-->
+      <td ng-if="venue.edittableVenue.venueid !== x.venueid">
+        {{x.venuename}}
+      </td>
+      <td ng-if="venue.edittableVenue.venueid !== x.venueid" style="text-align: right;">
+        {{x.venuecapacity}}
+      </td>
+      <td ng-if="venue.edittableVenue.venueid !== x.venueid">
+        {{x.venuedetails}}
+      </td>
+
+      <!--BEING EDITED-->
+      <td ng-if="venue.edittableVenue.venueid == x.venueid">
+        <input type="text" ng-model="venue.edittableVenue.venuename">
+      </td>
+      <td ng-if="venue.edittableVenue.venueid == x.venueid" style="text-align: right;">
+        <input type="number" min="1" ng-model="venue.edittableVenue.venuecapacity">
+      </td>
+      <td ng-if="venue.edittableVenue.venueid == x.venueid">
+        <input type="text" ng-model="venue.edittableVenue.venuedetails">
+      </td>
+
+
+
       <td>
-        <button class="ui green button">Reserve</button>
+        <button class="ui green button"
+                ng-class="{disabled : venue.editing && venue.edittableVenue.venueid != x.venueid}"
+                ng-click="venue.reserveVenue(x)">
+                Reserve
+        </button>
       </td>
       <td ng-if="venue.accounttype === 'admin'">
-        <button class="ui blue button" ng-click="venue.editVenue(x.venueid)">Edit</button>
+        <button class="ui blue button" 
+                ng-click="venue.editVenue(x)"
+                ng-if="venue.edittableVenue.venueid != x.venueid"
+                ng-class="{disabled : venue.editing}">
+                Edit
+        </button>
+        <button class="ui blue button"
+                ng-click="venue.editVenueConfirm()"
+                ng-if="venue.edittableVenue.venueid == x.venueid">
+                Save
+        </button>
       </td>
       <td ng-if="venue.accounttype === 'admin'">
-        <button class="ui red button" ng-click="venue.deleteVenue(x.venueid)">Delete</button>
+        <button class="ui red button" 
+                ng-click="venue.deleteVenue(x.venueid)"
+                ng-if="venue.edittableVenue.venueid != x.venueid"
+                ng-class="{disabled : venue.editing}">
+                Delete
+        </button>
+        <button class="ui red button"
+                ng-click="venue.editVenueCancel()"
+                ng-if="venue.edittableVenue.venueid == x.venueid">
+                Cancel
+        </button>
       </td>
     </tr>
   </tbody>
@@ -65,3 +110,59 @@
     </div>
 </div>
 
+
+<div class="ui modal" id="reserveVenue-modal">
+  <div class="header">Add Event</div>
+    <div class="content">        
+      <table class="ui table celled">
+        <thead>
+          <tr>
+            <th colspan="2">Event</th>
+          </tr>
+        </thead>
+        <tbody class="ui form">
+          <tr>
+            <td style="font-weight: bold;">Name</td>
+            <td class="field">
+              <input type="text"  ng-model="venue.newEvent.eventname">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Details</td>
+            <td class="field">
+              <input type="text"  ng-model="venue.newEvent.eventdetails">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Date</td>
+            <td class="field">
+              <input type="date"  ng-model="venue.newEvent.eventdate">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Type</td>
+            <td class="field">
+              <input type="text"  ng-model="venue.newEvent.eventtype">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Advertised</td>
+            <td class="inline fields">
+              <div class="field ui radio checkbox">
+                <input type="radio" value="true" ng-model="venue.newEvent.eventadvertised">
+                <label>Yes</label>
+              </div>
+              <div class="field ui radio checkbox">
+                <input type="radio" value="false" ng-model="venue.newEvent.eventadvertised">
+                <label>No</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <div class="ui button green inverted" ng-click="venue.reserveVenueConfirm()">Add</div>
+      <div class="ui button red inverted" ng-click="venue.reserveVenueCancel()">Cancel</div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 const venueController =require('../controllers/venues.controller');
 const eventController =require('../controllers/events.controller');
 const userController =require('../controllers/users.controller');
+const eventHasVenueController =require('../controllers/event-has-venue.controller');	
 const express = require('express');
 const router = express.Router();
 
@@ -40,6 +41,10 @@ router.get('/users/:accountid', userController.getUser);
 router.post('/users', userController.addUser);
 router.put('/users/:accountid', userController.updateUser);
 router.delete('/users/:accountid', userController.deleteUser);
+
+router.get('/events/venues/', eventHasVenueController.getAll);
+router.post('/events/venues', eventHasVenueController.add);
+router.delete('/events/venues/:eventid/:venueid', eventHasVenueController.delete);
 
 router.get('/loggedIn', (req, res) => {
 	if (req.session)

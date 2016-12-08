@@ -23,7 +23,7 @@
 	        function(response){
 	          if (response.data){
 	            vm.userEvents = response.data.filter(event=>{
-	            	return currentUser.userid==event.userid;
+	            	return vm.currentUser.userid==event.userid;
 	            });
 	          }
 	        }

@@ -37,7 +37,7 @@ create table event(
 	accountid int unsigned,
 	eventname varchar(100) not null,
 	eventdetails varchar(500),
-	eventdate varchar(50) not null,
+	eventdate date not null,
 	eventtype varchar(50),
 	eventadvertised boolean,
 	approved boolean not null default FALSE,
@@ -83,11 +83,9 @@ update user set dateadded = str_to_date(dateadded,"%m/%d/%Y");
 LOAD DATA LOCAL INFILE 'projectData/event.csv' INTO TABLE event
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' 
 LINES TERMINATED BY '\n'
-IGNORE 1 LINES (eventname,eventdetails,eventdate,eventstarttime,eventendtime)
+IGNORE 1 LINES (accountid, eventname,eventdetails,eventdate, eventtype, eventadvertised)
 set eventid = NULL;
 
--- convert string to date and apply to eventdate column
-update event set eventdate = str_to_date(eventdate,"%m/%d/%Y");
 
 -- load venue data from venue.csv
 LOAD DATA LOCAL INFILE 'projectData/venue.csv' INTO TABLE venue

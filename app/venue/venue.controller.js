@@ -7,19 +7,31 @@
 	function venueController($http){
 		var vm = this;
 
+				vm.currentUser = null;
+
 	      vm.newVenue = {};
+				vm.newEvent = {};
+				vm.edittableVenue = {};
 	      vm.venues = [];
 				vm.allVenues = [];
 				vm.searchCategory = 'venuename';
 				vm.searchFilter = '';
 				vm.accounttype = '';
 
+				vm.editing = false;
+
 				vm.switchacct = switchacct;
 
 	      vm.addVenue = addVenue;
+				vm.editVenue = editVenue;
+				vm.editVenueConfirm = editVenueConfirm;
+				vm.editVenueCancel = editVenueCancel;
 				vm.deleteVenue = deleteVenue;
 				vm.searchVenue = searchVenue;
 
+				vm.reserveVenue = reserveVenue;
+				vm.reserveVenueConfirm = reserveVenueConfirm;
+				vm.reserveVenueCancel = reserveVenueCancel;
 		  vm.openModal = openModal;
 	      
 	      $http.get('/venues').then(
@@ -36,6 +48,7 @@
 						$http
 							.get('/users/' + response.data)
 							.then(function(response) {
+								vm.currentUser = response.data;
 								vm.accounttype = response.data.accounttype;
 							});
 					}
@@ -60,12 +73,46 @@
 	          );
 	      }
 
-				function editVenue(id) {
-					if (vm.editing) {
-						return
-					}
+				function editVenue(venue) {
+						if (vm.editing) {
+							return;
+						}
+						vm.edittableVenue = $.extend({}, venue);
+						vm.edittableVenue.venuecapacity = Number(vm.edittableVenue.venuecapacity);
+						vm.editing = true;
+				}
 
-					vm.editing = true;
+				function editVenueConfirm() {
+						$http
+							.put('/venues/'+vm.edittableVenue.venueid, vm.edittableVenue)
+							.then(function(response) {
+								console.log('Success in editing event');
+
+								vm.venues = vm.venues.map(venue => {
+									if (venue.venueid === vm.edittableVenue.venueid) {
+										return $.extend({}, vm.edittableVenue);
+									} else {
+										return venue;
+									}
+								});
+
+								vm.allVenues = vm.allVenues.map(venue => {
+									if (venue.venueid === vm.edittableVenue.venueid) {
+										return $.extend({}, vm.edittableVenue);
+									} else {
+										return venue;
+									}
+								});
+								vm.editing = false;
+								vm.edittableVenue = {};
+							}, function(response) {
+								console.log('Error in editing event');
+							});
+				}
+
+				function editVenueCancel() {
+					vm.editing = false;
+					vm.edittableVenue = {};
 				}
 
 				function deleteVenue(id) {
@@ -104,6 +151,46 @@
 						}
 				}
 
+				function reserveVenue(venue) {
+					openModal('reserveVenue-modal');
+					vm.newEvent.eventdate = new Date();
+					vm.newEvent.accountid = vm.currentUser.accountid;
+					vm.newEvent.approved = false;
+					vm.newEvent.status = 'Pending';
+					vm.newEvent.venueid = venue.venueid;
+				}
+
+				function reserveVenueConfirm() {
+					$http
+						.post('/events', vm.newEvent)
+						.then(function(response) {
+							console.log('success in reserving venue');
+							var eventHasVenue = {
+								eventid: response.data.id,
+								venueid: vm.newEvent.venueid,
+								reservationdate: vm.newEvent.eventdate
+							};
+
+							$http
+								.post('/events/venues/', eventHasVenue)
+								.then(function(response) {
+									console.log('Success added to event has venue');
+									reserveVenueCancel();
+								}, function(response) {
+									console.log('Error added to event has venue');
+								});
+
+
+						}, function(response) {
+							console.log('error in reserving venue');
+						}); 
+				}
+
+				function reserveVenueCancel() {
+					$('#reserveVenue-modal').modal('hide');
+					vm.newEvent = {};
+				}
+
 				function switchacct() {
 					if (vm.accounttype === 'admin')
 						vm.accounttype = 'normal_user';
@@ -111,10 +198,10 @@
 						vm.accounttype = 'admin';
 				}
 
-		function openModal() {
-			 $('.ui.modal')
+		function openModal(id) {
+			 $('#'+id)
 			 	.modal('setting', {
-					 closable: true
+					 closable: false
 				})
 				.modal('show');
 		 }
