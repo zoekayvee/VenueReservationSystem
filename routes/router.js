@@ -46,6 +46,8 @@ router.get('/events/venues/', eventHasVenueController.getAll);
 router.post('/events/venues', eventHasVenueController.add);
 router.delete('/events/venues/:eventid/:venueid', eventHasVenueController.delete);
 
+router.get('/eventsDetails', eventHasVenueController.getAllDetails);
+
 router.get('/loggedIn', (req, res) => {
 	if (req.session)
 		res.send(req.session.accountid);

@@ -15,6 +15,7 @@
 		vm.addUser = addUser;
 		vm.openModal = openModal;
 		vm.closeModal = closeModal;
+		vm.logOut = logOut;
 
 		function loginUser(){
 			var credentials={
@@ -45,6 +46,14 @@
 		              	console.log("Error. User cannot be added!");
 		            });
 			closeModal();
+	     }
+
+	     function logOut() {
+	     	$http.post('/logout')
+	     			.then(function(response) {
+	     				var redirect = response.data.redirect;
+	     				window.location.href=redirect;
+	     			});
 	     }
 
 		 function openModal() {

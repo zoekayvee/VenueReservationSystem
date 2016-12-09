@@ -24,10 +24,15 @@
 					controller: 'requestController',
 					controllerAs: 'request'
 				})
-				.when('/profile',{
+				.when('/',{
 					templateUrl: '/profile/profile.html',
 					controller: 'profileController',
 					controllerAs: 'profile'
+				})
+				.when('/reports',{
+					templateUrl: '/report/report.html',
+					controller: 'reportController',
+					controllerAs: 'report'
 				});
 		});
 })();
