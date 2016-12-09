@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="mainApp">
+<html ng-app="mainApp" ng-cloak>
 
 <head>
   <title>Event Reservation System</title>
@@ -13,17 +13,14 @@
 <body>
   
   <!-- Sidebar -->
-  <div class="ui grid">
+  <div class="ui grid" ng-controller = "loginController as logOut">
       <div class="three wide column">
         <div class="ui left wide sidebar visible inverted vertical menu">
           <h2 class="image header">
             <img class="ui centered small circular image" src="pictures/patrick.png">
           </h2>
-          <a class="item" href="/">
+          <a class="item" href="/#/">
             Home
-          </a>
-          <a class="item" href="/#/profile">
-            Profile
           </a>
           <a class="item" href="/#/events">
             Events
@@ -31,13 +28,16 @@
           <a class="item" href="/#/venues">
             Venues
           </a>
-          <a class="item" href="/#/users">
+          <a class="item" href="/#/users" ng-if="logOut.currentUser.accounttype === 'admin'">
             Users
           </a>
-          <a class="item" href="/#/requests">
+          <a class="item" href="/#/requests" ng-if="logOut.currentUser.accounttype === 'admin'">
             Requests
           </a>
-          <a class="item" href="/">
+          <a class="item" href="/#/reports" ng-if="logOut.currentUser.accounttype === 'admin'">
+            Generate Reports
+          </a>
+          <a class="item" ng-click="logOut.logOut()">
             Logout
           </a>
         
@@ -62,6 +62,8 @@
   <script src="user/user.controller.js"></script>
   <script src="profile/profile.controller.js"></script>
   <script src="request/request.controller.js"></script>
+  <script src="report/report.controller.js"></script>
+  <script src="login.controller.js"></script>
 </body>
 
 </html>

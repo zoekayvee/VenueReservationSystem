@@ -7,6 +7,13 @@ exports.getAll = (req, res) => {
     });
 }
 
+exports.getAllDetails = (req, res) => {
+    c.query('select * from venue natural join event natural join event_has_venue natural join user', (err, rows) => {
+        if (err) throw err;
+        res.send(rows);
+    });
+}
+
 exports.add = (req, res) => {
     c.query('INSERT INTO event_has_venue VALUES(:eventid, :venueid, :reservationdate)', req.body, (err, rows) => {
         if (err) throw err;

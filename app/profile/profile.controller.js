@@ -9,8 +9,13 @@
 
 		vm.currentUser = {};
 		vm.userEvents = [];
+		vm.eventToBeEdited = {};
 
+		vm.openModal = openModal;
+	    vm.closeModal = closeModal;
 		vm.cancelEvent = cancelEvent;
+	    vm.editEvent = editEvent;
+	    vm.confirmEditEvent = confirmEditEvent;
 
 		$http
 			.get('/loggedIn')
@@ -55,6 +60,43 @@
 	    			})
 	    		})
 	    }
+
+	    function openModal(id) {
+			 $(id)
+			 	.modal('setting', {
+					 closable: false
+				})
+				.modal('show');
+		 }
+
+		 function closeModal(id) {
+			 $(id)
+			 	.modal('hide');
+			vm.newUser = {};	
+		 }
+
+		 function editEvent(event) {
+		 	vm.eventToBeEdited = $.extend({}, event);
+		 		console.log("HALU")
+		 		openModal('#editEvent-modal')
+
+		 }
+
+		 function confirmEditEvent() {
+		 	$http.put('/events/'+ vm.eventToBeEdited.eventid, vm.eventToBeEdited)
+		 		.then(function(response) {
+		 			vm.userEvents = vm.userEvents.map(editedEvent => {
+		 				if(editedEvent.eventid==vm.eventToBeEdited.eventid){
+		 					return vm.eventToBeEdited;
+		 				} else {
+		 					return editedEvent;
+		 				}
+		 			}
+		 			)
+		 		});
+
+		 	closeModal('#editEvent-modal');
+		 }
 
 	}
 })();

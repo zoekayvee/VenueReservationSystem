@@ -1,0 +1,53 @@
+<div class="ui padded segment">
+    <div class="ui column">
+      <h1 class="ui header">Generate Reports</h1>
+    </div>
+</div>
+
+<h3 class="ui centered header"> All Events </h3>
+<table class="ui table celled selectable">
+  <thead>
+    <tr>
+      <th>Event Name</th>
+      <th>Event Details</th>
+      <th>Event Date</th>
+      <th>Event Type</th>
+      <th>Venue</th>
+      <th>Reserved By</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="x in report.eventDetails">
+      <td>{{x.eventname}}</td>
+      <td>{{x.eventdetails}}</td>
+      <td>{{x.eventdate}}</td>
+      <td>{{x.eventtype}}</td>
+      <td>{{x.venuename}}</td>
+      <td>{{x.username}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="ui centered header"> Upcoming Events </h3>
+<table class="ui table celled selectable">
+  <thead>
+    <tr>
+      <th>Event Name</th>
+      <th>Event Details</th>
+      <th>Event Date</th>
+      <th>Event Type</th>
+      <th>Venue</th>
+      <th>Reserved By</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="x in report.eventDetails">
+      <td>{{x.eventname}}</td>
+      <td>{{x.eventdetails}}</td>
+      <td>{{x.eventdate}}</td>
+      <td>{{x.eventtype}}</td>
+      <td>{{x.venuename}}</td>
+      <td>{{x.username}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -10,11 +10,26 @@
 		vm.username="";
 		vm.password="";
 		vm.loginUser=loginUser;
+        vm.currentUser = {};
 
 		vm.newUser = {};
 		vm.addUser = addUser;
 		vm.openModal = openModal;
 		vm.closeModal = closeModal;
+		vm.logOut = logOut;
+
+        $http   
+            .get('/loggedIn')
+            .then(function(response) {
+                if (response.data) {
+                    $http
+                        .get('/users/'+response.data)
+                        .then(function(response) {
+                            vm.currentUser = response.data;
+                            console.log(vm.currentUser);
+                        });
+                }
+            });
 
 		function loginUser(){
 			var credentials={
@@ -45,6 +60,14 @@
 		              	console.log("Error. User cannot be added!");
 		            });
 			closeModal();
+	     }
+
+	     function logOut() {
+	     	$http.post('/logout')
+	     			.then(function(response) {
+	     				var redirect = response.data.redirect;
+	     				window.location.href=redirect;
+	     			});
 	     }
 
 		 function openModal() {

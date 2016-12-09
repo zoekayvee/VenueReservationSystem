@@ -39,15 +39,70 @@
 	    <div class="header">{{x.eventname}}</div>
 	    <div class="meta">{{x.eventdate}}</div>
 	    <div class="description">
-	      <p>{{x.eventdetails}}</p>
-	    </div>
-	  </div>
-	  <div class="extra content">
-	    <i class="check icon"></i>
+	      <p>{{x.eventdetails}}</p>	       
+         <p><i class="check icon"></i>Status: {{x.status}}</p>
+      </div>
+    </div>
+    <div class="extra content">
       <button class = "ui red button" ng-click="profile.cancelEvent(x)">Cancel</button>
-	    <button class="ui teal button">Edit</button>
+	    <button class="ui teal button" ng-click="profile.editEvent(x)">Edit</button>
 	  </div>
 	</div>
 </div>
 </div>
 
+<div class="ui modal" id="editEvent-modal">
+  <div class="header">Edit Event</div>
+    <div class="content">        
+      <table class="ui table celled">
+        <thead>
+          <tr>
+            <th colspan="2">Event</th>
+          </tr>
+        </thead>
+        <tbody class="ui form">
+          <tr>
+            <td style="font-weight: bold;">Name</td>
+            <td class="field">
+              <input type="text"  ng-model="profile.eventToBeEdited.eventname">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Details</td>
+            <td class="field">
+              <input type="text"  ng-model="profile.eventToBeEdited.eventdetails">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Date</td>
+            <td class="field">
+              <input type="date"  ng-model="profile.eventToBeEdited.eventdate">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Type</td>
+            <td class="field">
+              <input type="text"  ng-model="profile.eventToBeEdited.eventtype">
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Advertised</td>
+            <td class="inline fields">
+              <div class="field ui radio checkbox">
+                <input type="radio" value="true" ng-model="profile.eventToBeEdited.eventadvertised">
+                <label>Yes</label>
+              </div>
+              <div class="field ui radio checkbox">
+                <input type="radio" value="false" ng-model="profile.eventToBeEdited.eventadvertised">
+                <label>No</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <div class="ui button green inverted" ng-click="profile.confirmEditEvent()">Add</div>
+      <div class="ui button red inverted" ng-click="profile.editEventCancel()">Cancel</div>
+    </div>
+</div>

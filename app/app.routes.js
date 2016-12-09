@@ -19,6 +19,11 @@
                             console.log(response.data);
                             if (response.data.accounttype === 'admin') {
                                 routeProvider
+                                    .when('/',{
+                                        templateUrl: '/profile/profile.html',
+                                        controller: 'profileController',
+                                        controllerAs: 'profile'
+                                    })
                                     .when('/venues',{
                                         templateUrl: '/venue/venue.html',
                                         controller: 'venueController',
@@ -39,13 +44,21 @@
                                         controller: 'requestController',
                                         controllerAs: 'request'
                                     })
-                                    .when('/profile',{
-                                        templateUrl: '/profile/profile.html',
-                                        controller: 'profileController',
-                                        controllerAs: 'profile'
+                                    .when('/reports',{
+                                        templateUrl: '/report/report.html',
+                                        controller: 'reportController',
+                                        controllerAs: 'report'
+                                    })
+                                    .otherwise({
+                                        redirectTo: '/'    
                                     });
                             } else {
                                 routeProvider
+                                    .when('/',{
+                                        templateUrl: '/profile/profile.html',
+                                        controller: 'profileController',
+                                        controllerAs: 'profile'
+                                    })
                                     .when('/venues',{
                                         templateUrl: '/venue/venue.html',
                                         controller: 'venueController',
@@ -56,10 +69,8 @@
                                         controller: 'eventController',
                                         controllerAs: 'event'
                                     })
-                                    .when('/profile',{
-                                        templateUrl: '/profile/profile.html',
-                                        controller: 'profileController',
-                                        controllerAs: 'profile'
+                                    .otherwise({
+                                        redirectTo: '/'    
                                     });
                             }
                         });
