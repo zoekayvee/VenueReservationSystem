@@ -35,18 +35,18 @@ exports.addVenue=(req, res)=>{
 }
 
 exports.updateVenue=(req,res)=>{
-  var updateVenue = {
+  var updatedVenue = {
+    venueid: req.params.venueid,
     venuename: req.body.venuename,
     venuecapacity: req.body.venuecapacity,
-    venuedetails: req.body.venudetails
+    venuedetails: req.body.venuedetails
   };
 
-  c.query('UPDATE venue SET venuename=:venuename, venuecapacity=:venuecapacity, venuedetails=:venuedetails WHERE venueid=:venueid', req.body, function(err,rows){
+  c.query('UPDATE venue SET venuename=:venuename, venuecapacity=:venuecapacity, venuedetails=:venuedetails WHERE venueid=:venueid', updatedVenue, function(err,rows){
     if (err){
       console.log(err);
     } else {
-      console.log(results);
-      res.send(req.body);
+      res.send(updatedVenue);
     }
   });
 }

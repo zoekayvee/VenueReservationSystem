@@ -29,3 +29,45 @@
 </div>
 
 <h2 class="ui header">Event Requests</h2>
+<div class="ui four column stackable grid">
+<div class="column" ng-repeat="x in request.approveEvents">
+	<div class="ui fluid card">
+	  <div class="content">
+	    <div class="header">{{x.eventname}}</div>
+	    <div class="meta">{{x.eventdate}}</div>
+	    <div class="description">
+	      <p>{{x.eventdetails}}</p>
+	    </div>
+	  </div>
+	  <div class="extra content">
+	    <i class="check icon"></i>
+	    {{x.status}}
+	    <span class="right floated">
+	    	<button class="ui teal button" ng-click=request.approveEvent(x)>Approve</button>
+	    </span>
+	  </div>
+	</div>
+</div>
+</div>
+
+<h2 class="ui header">Cancellation Requests</h2>
+<div class="ui four column stackable grid">
+<div class="column" ng-repeat="x in request.approveCancelledEvents">
+	<div class="ui fluid card">
+	  <div class="content">
+	    <div class="header">{{x.eventname}}</div>
+	    <div class="meta">{{x.eventdate}}</div>
+	    <div class="description">
+	      <p>{{x.eventdetails}}</p>
+	    </div>
+	  </div>
+	  <div class="extra content">
+	    <i class="check icon"></i>
+	    {{x.status}}
+	    <span class="right floated">
+	    	<button class="ui teal button" ng-click=request.cancelEvent(x)>Approve</button>
+	    </span>
+	  </div>
+	</div>
+</div>
+</div>

@@ -6,9 +6,6 @@
 
 <div class="ui menu">
   <div class="item">
-    <div class="ui button">Add Event</div>
-  </div>
-  <div class="item">
     <div class="ui action input">
       <input type="text" placeholder="Search...">
       <select class="ui compact selection dropdown">
@@ -33,15 +30,8 @@
 	  </div>
 	  <div class="extra content">
 	    <i class="check icon"></i>
-	    {{x.eventstarttime}} to {{x.eventendtime}}
+	    {{x.status}}
 	  </div>
 	</div>
 </div>
 </div>
-
-
-<ul>
-  <li ng-repeat="x in event.events">
-        {{x.eventid}}. {{x.userid}} - {{x.eventname}} - {{x.eventdetails}} - {{x.eventdate}} - {{x.eventstarttime}} to {{x.eventendtime}} - {{x.eventtype}}
-  </li>
-</ul>

@@ -30,6 +30,7 @@
   </tbody>
 </table>
 
+
 <h3 class="ui header">Your Events</h3>
 <div class="ui four column stackable grid">
 <div class="column" ng-repeat="x in profile.userEvents">
@@ -43,7 +44,8 @@
 	  </div>
 	  <div class="extra content">
 	    <i class="check icon"></i>
-	    {{x.eventstarttime}} to {{x.eventendtime}}
+      <button class = "ui red button" ng-click="profile.cancelEvent(x)">Cancel</button>
+	    <button class="ui teal button">Edit</button>
 	  </div>
 	</div>
 </div>

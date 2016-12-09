@@ -1,6 +1,7 @@
 const venueController =require('../controllers/venues.controller');
 const eventController =require('../controllers/events.controller');
 const userController =require('../controllers/users.controller');
+const eventHasVenueController =require('../controllers/event-has-venue.controller');	
 const express = require('express');
 const router = express.Router();
 
@@ -32,14 +33,18 @@ router.delete('/venues/:venueid', venueController.deleteVenue);
 router.get('/events', eventController.getEvents);
 router.get('/events/:eventid', eventController.getEvent);
 router.post('/events', eventController.addEvent);
-router.put('/events/:venueid', eventController.updateEvent);
-router.delete('/events/:venueid', eventController.deleteEvent);
+router.put('/events/:eventid', eventController.updateEvent);
+router.delete('/events/:eventid', eventController.deleteEvent);
 
 router.get('/users', userController.getUsers);
 router.get('/users/:accountid', userController.getUser);
 router.post('/users', userController.addUser);
 router.put('/users/:accountid', userController.updateUser);
 router.delete('/users/:accountid', userController.deleteUser);
+
+router.get('/events/venues/', eventHasVenueController.getAll);
+router.post('/events/venues', eventHasVenueController.add);
+router.delete('/events/venues/:eventid/:venueid', eventHasVenueController.delete);
 
 router.get('/loggedIn', (req, res) => {
 	if (req.session)

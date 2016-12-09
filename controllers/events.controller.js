@@ -18,23 +18,21 @@ exports.getEvent=(req,res)=>{
 
 exports.addEvent=(req, res)=>{
   var newEvent = {
-    userid: req.body.userid,
-    acountid: req.body.acountid,
+    accountid: req.body.accountid,
     eventname: req.body.eventname,
     eventdetails: req.body.eventdetails,
     eventdate: req.body.eventdate,
-    eventstarttime: req.body.eventstarttime,
-    eventendtime: req.body.eventendtime,
     eventtype: req.body.eventtype,
     eventadvertised: req.body.eventadvertised,
+    approved: req.body.approved,
+    status: req.body.status
   }
 
-  c.query('INSERT INTO event VALUES(0, :userid, :accountid, :eventname, :eventdetails, :eventdate, :eventstarttime, :eventendtime, :eventtype, :eventadverised)', newEvent, function(err, results) {
+  c.query('INSERT INTO event VALUES(0, :accountid, :eventname, :eventdetails, :eventdate, :eventtype, :eventadverised, :approved, :status)', newEvent, function(err, results) {
     if (err) {
       console.log(err);
     }
     else {
-    	console.log(results);
     	res.send({success: 'Successfully added: ' + newEvent.eventname, id: results.info.insertId});
     };
   });
@@ -42,22 +40,22 @@ exports.addEvent=(req, res)=>{
 
 exports.updateEvent=(req,res)=>{
   var updateEvent = {
-    userid: req.body.userid,
-    acountid: req.body.acountid,
+    eventid: req.params.eventid,
+    accountid: req.body.accountid,
     eventname: req.body.eventname,
     eventdetails: req.body.eventdetails,
     eventdate: req.body.eventdate,
-    eventstarttime: req.body.eventstarttime,
-    eventendtime: req.body.eventendtime,
     eventtype: req.body.eventtype,
     eventadvertised: req.body.eventadvertised,
+    approved: req.body.approved,
+    status: req.body.status
   }
 
-  c.query('UPDATE event SET eventname=:eventname, eventdetails=:eventdetails, eventdate=:eventdate, eventstarttime=:eventstarttime, eventendtime=:eventendtime, eventtype=:eventtype, eventadvertised=:eventadverised WHERE eventid=:eventid', updateEvent, function(err,rows){
+  c.query('UPDATE event SET eventname=:eventname, eventdetails=:eventdetails, eventdate=:eventdate, eventtype=:eventtype, eventadvertised=:eventadverised, approved=:approved, status=:status WHERE eventid=:eventid', updateEvent, function(err,rows){
     if (err){
       console.log(err);
     } else {
-      console.log(results);
+      console.log("Updateeedd!")
       res.send(req.body);
     }
   });

@@ -1,32 +1,76 @@
-eventname,eventdetails,eventdate,eventstarttime,eventendtime
-"AdvancedBuildingSkillsConference","necluctusfelispurusactellus.","03/09/2017","6am","9am"
-"PharmaceuticalMarketAccessSeminar","commodotinciduntnibh.Phasellusnulla.Integer","01/11/2017","11am","5pm"
-"Operators’Conference","Morbivehicula.Pellentesquetincidunttempusrisus.Donecegestas.Duisac","01/06/2017","7am","5pm"
-"WorldADCTraining","diam.Duismienim,condimentumeget,","11/18/2015","12pm","5pm"
-"Thestructureofclinicaltrialsseminar","utaliquam","05/31/2017","9am","4pm"
-"FILTECH2016","ultrices.Vivamusrhoncus.Donecest.Nuncullamcorper,velitin","04/12/2016","6am","1pm"
-"ConcertforaCause","venenatislacus.Etiambibendum","08/27/2016","11am","10pm"
-"GCConvention","Naminterdum","12/24/2015","8am","7pm"
-"PharmaExpo","ridiculusmus.Aeneanegetmagna.Suspendissetristiqueneque","04/11/2017","4pm","10pm"
-"JobExpo","nunc,ullamcorpereu,euismodac,fermentumvel,mauris.Integer","06/17/2017","11am","9pm"
-"CONNECT2016","at","11/16/2016","12pm","2pm"
-"Hum3Concert","ornaresagittisfelis.Donec","10/20/2016","12pm","2pm"
-"The10thNationalScientistForum","Nullamnisl.Maecenasmalesuadafringillaest.Mauriseuturpis.Nulla","01/24/2016","12pm","2pm"
-"ADaywiththePresident","Sedidrisus","06/22/2017","11am","10pm"
-"MissBulalacao","magnisdisparturientmontes,nascetur","02/13/2017","4pm","10pm"
-"EdSheeranLiveinUPLB!","cursuspurus.Nullamscelerisquenequesedsemegestasblandit.","04/10/2017","10am","1pm"
-"DanielPadillaLiveinUPLB!","bibendum.Donecfelis","03/21/2017","5pm","7pm"
-"7thInternationalWorkshoponAdvancesinNanoscience","adipiscing,enimmitemporlorem,","11/10/2016","2pm","9pm"
-"TheSymposium","quisarcuvelquamdignissimpharetra.Namacnulla.","01/10/2016","11am","7pm"
-"ASeminaronBigDataAnalysis","eu,euismodac,fermentumvel,mauris.Integersem","05/28/2016","2pm","10pm"
-"TEDTALK1","habitantmorbitristiquesenectusetnetus","12/03/2016","2pm","4pm"
-"TEDTALK2","lorem,luctusut,pellentesqueeget,dictumplacerat,","12/03/2016","4pm","6pm"
-"CytokinesLectureSeries2016","felisullamcorperviverra.Maecenasiaculisaliquet","12/09/2016","8am","11am"
-"CytokinesLectureSeries2016","augue,eutemporerat","12/09/2016","1pm","4pm"
-"IEEEConferenceonCognitiveInfocommunications","nislsem,consequatnec,mollisvitae,","04/14/2016","10am","5pm"
-"GreenUrbanism","etarcu","05/23/2017","8am","2pm"
-"SyensayaExhibit","magna.Sedeueros.","05/04/2016","6am","2pm"
-"OrganicAgricultureSeminar","lacus.Mauris","03/11/2016","11am","10pm"
-"Streetdanceconcert","eudoloregestasrhoncus.Proinnislsem,consequatnec,mollis","09/30/2017","12pm","6pm"
-"StarinCarillionQuarterFinals","etmagnisdisparturient","11/09/2016","7am","3pm"
-"PalaCASan2016:Finals","mattis.Crasegetnisidictumaugue","11/29/2016","8am","5pm"
+accountid,eventname,eventdetails,eventdate,eventtype,eventadvertised
+23,Yamia,quis libero nullam sit amet,2016-03-10,amet nunc,true
+2,Jabbersphere,lobortis ligula sit amet eleifend,2016-08-10,in,false
+13,Skimia,eget semper rutrum nulla nunc purus phasellus in felis,2016-04-09,velit donec,false
+14,Blogtag,sapien dignissim vestibulum vestibulum ante ipsum,2016-05-05,libero nullam,false
+8,Youopia,nulla suscipit ligula in lacus,2016-08-10,consequat,false
+9,Twitterbridge,consequat metus sapien ut nunc vestibulum ante ipsum primis in,2016-06-13,etiam,true
+21,Zazio,pede lobortis ligula sit amet eleifend pede libero,2015-12-30,lorem,false
+10,Zooxo,ipsum dolor sit amet consectetuer adipiscing elit,2016-03-13,ultrices,true
+22,Vimbo,lacus at turpis donec posuere metus vitae ipsum aliquam,2016-04-11,augue,true
+6,Jabberstorm,quis odio consequat varius integer,2016-10-27,sapien ut,true
+16,Tazzy,ac tellus semper interdum mauris ullamcorper purus sit amet,2016-10-24,est,true
+1,Trunyx,nulla eget eros elementum pellentesque quisque porta volutpat erat,2016-09-14,ac nulla,true
+3,Twitterlist,at nunc commodo placerat praesent,2016-02-23,in leo,false
+10,Divavu,tincidunt eu felis fusce posuere felis sed lacus,2016-07-31,quisque,false
+19,Yata,proin leo odio porttitor id,2016-07-06,in,true
+5,Katz,nibh in quis justo maecenas rhoncus aliquam lacus,2016-03-09,amet erat,true
+22,Edgetag,et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet,2016-05-27,suscipit nulla,true
+3,Feedmix,dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis,2015-12-26,dui vel,true
+24,Centidel,at nunc commodo placerat praesent blandit nam,2016-11-19,lectus,true
+9,Dynazzy,dapibus augue vel accumsan tellus nisi,2016-09-18,erat quisque,false
+17,Topiczoom,eget eleifend luctus ultricies eu nibh quisque id justo sit,2016-06-13,nisi venenatis,false
+18,Dabtype,sapien iaculis congue vivamus metus arcu adipiscing,2015-12-23,ut suscipit,true
+7,Jabbercube,in faucibus orci luctus et,2016-07-24,magna vestibulum,false
+22,Yabox,lacinia nisi venenatis tristique fusce congue,2016-10-05,habitasse platea,true
+20,Jatri,morbi a ipsum integer a nibh in quis justo,2016-04-16,at,false
+3,Aivee,congue etiam justo etiam pretium iaculis justo in hac,2016-09-19,maecenas,true
+14,Kamba,venenatis turpis enim blandit mi in porttitor pede,2016-06-20,amet,true
+12,Avaveo,at velit eu est congue elementum,2016-01-18,velit id,true
+17,Fadeo,nulla integer pede justo lacinia eget tincidunt eget tempus,2016-04-17,pulvinar sed,true
+1,Rhynoodle,enim sit amet nunc viverra dapibus nulla,2016-04-21,sed,false
+20,Browsetype,posuere metus vitae ipsum aliquam non mauris morbi non,2016-08-22,sapien,false
+16,Fivechat,vestibulum ante ipsum primis in,2016-02-10,risus dapibus,false
+6,Twinder,vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl,2016-03-30,fusce,true
+6,Wikizz,iaculis diam erat fermentum justo,2016-08-07,praesent blandit,true
+18,Edgetag,cras pellentesque volutpat dui maecenas tristique est et tempus,2016-04-15,ligula,true
+9,Dablist,sapien quis libero nullam sit amet turpis elementum,2016-10-08,aliquam sit,false
+15,Ntag,mauris lacinia sapien quis libero nullam sit amet turpis,2016-07-07,vel dapibus,true
+22,Browsetype,augue quam sollicitudin vitae consectetuer eget,2016-03-03,at diam,true
+22,Layo,commodo vulputate justo in blandit ultrices enim lorem,2016-04-17,sed ante,true
+1,Realpoint,augue luctus tincidunt nulla mollis molestie lorem quisque,2016-10-09,et,true
+17,Oyondu,potenti cras in purus eu magna vulputate luctus cum sociis,2016-12-03,est quam,false
+6,Photobean,quam sollicitudin vitae consectetuer eget rutrum at lorem,2016-03-18,sem,false
+3,Realbuzz,morbi vestibulum velit id pretium iaculis diam erat,2016-11-01,augue,true
+8,Zoomzone,odio in hac habitasse platea dictumst maecenas ut massa,2016-08-14,amet,false
+8,Fanoodle,quis lectus suspendisse potenti in,2016-06-29,donec diam,false
+2,Jaloo,eleifend quam a odio in hac,2016-09-21,turpis integer,false
+24,Realpoint,eleifend quam a odio in hac habitasse platea dictumst,2016-03-06,congue,false
+9,Dazzlesphere,posuere cubilia curae donec pharetra magna vestibulum aliquet,2016-03-15,bibendum,true
+20,Thoughtworks,nullam varius nulla facilisi cras non velit nec nisi,2016-06-20,in,true
+20,Eabox,nulla justo aliquam quis turpis eget elit sodales scelerisque mauris,2016-04-19,urna pretium,true
+19,Riffpath,libero ut massa volutpat convallis morbi odio,2016-08-21,elementum pellentesque,true
+10,Skimia,arcu adipiscing molestie hendrerit at vulputate,2016-05-19,ac,false
+1,Jatri,in faucibus orci luctus et,2016-10-17,curabitur convallis,true
+18,Quinu,sit amet turpis elementum ligula vehicula,2016-08-26,odio consequat,false
+22,Tagchat,est congue elementum in hac habitasse platea dictumst,2016-10-27,lectus pellentesque,false
+23,Tagchat,aliquam sit amet diam in magna,2016-05-05,ipsum,true
+12,Linkbridge,magna at nunc commodo placerat praesent blandit,2016-02-26,at nibh,true
+4,Devify,eleifend luctus ultricies eu nibh quisque,2016-05-23,ut,false
+17,Tagtune,odio donec vitae nisi nam ultrices,2016-07-19,orci,false
+1,Bubblemix,turpis sed ante vivamus tortor duis mattis egestas metus aenean,2016-09-28,pede ullamcorper,false
+8,Muxo,porta volutpat quam pede lobortis ligula sit amet,2016-06-23,libero,false
+11,Latz,diam in magna bibendum imperdiet nullam orci pede venenatis non,2016-03-21,sit,true
+19,Avamba,luctus et ultrices posuere cubilia,2016-11-19,dolor,true
+10,Trupe,penatibus et magnis dis parturient montes nascetur,2016-02-20,in leo,false
+18,Meevee,porttitor lorem id ligula suspendisse ornare consequat lectus,2015-12-12,morbi,true
+4,Zazio,consectetuer adipiscing elit proin interdum mauris non ligula,2016-08-26,ac,false
+21,Twinte,platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum,2016-02-12,orci eget,true
+16,Buzzshare,vestibulum sit amet cursus id turpis,2015-12-24,nulla quisque,false
+5,Twimm,aenean fermentum donec ut mauris,2016-06-27,tempus sit,true
+22,Yozio,vestibulum velit id pretium iaculis diam erat fermentum justo nec,2016-05-08,magnis,false
+1,Layo,orci luctus et ultrices posuere cubilia curae,2016-09-12,eu tincidunt,true
+11,Ainyx,vivamus vel nulla eget eros,2016-03-28,blandit,true
+20,Rhyloo,nulla facilisi cras non velit nec nisi vulputate,2016-04-12,orci,true
+2,Rhyloo,non lectus aliquam sit amet,2016-08-27,justo,false
+2,Roomm,placerat ante nulla justo aliquam quis,2016-01-19,lacus morbi,false
