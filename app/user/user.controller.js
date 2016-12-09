@@ -8,21 +8,56 @@
 		var vm = this;
 
 	      vm.user = [];
+          vm.allUser = [];
 	      vm.userToBeEdited = {};
 	      
+          vm.searchFilter = '';
+          vm.searchCategory = 'username';
+          vm.searchYear = '1970';
+          vm.searchMonth = '01';
+          vm.searchDate = '01';
+
 	      vm.openModal = openModal;
 	      vm.closeModal = closeModal;
 	      vm.editUser = editUser;
 	      vm.confirmEditUser = confirmEditUser;
 	      vm.deleteUser = deleteUser;
+          vm.search = search;
 
 	      $http.get('/users').then(
 	        function(response){
 	          if (response.data){
 	            vm.user = response.data;
+                vm.allUser = vm.user;
 	          }
 	        }
 	      )
+
+          function search() {
+              if (vm.searchCategory !== 'dateadded') {
+                  vm.user = vm.allUser.filter(user => {
+
+                      return user[vm.searchCategory] && user[vm.searchCategory].toLowerCase().includes(vm.searchFilter.toLowerCase());
+                  });
+              } else {
+                    if (vm.searchYear) var year = vm.searchYear;
+                    else var year = '\\d{4}';
+
+                    if (vm.searchMonth) var month = vm.searchMonth;
+                    else var month = '\\d{2}';
+
+                    if (vm.searchDate) var date = vm.searchDate;
+                    else var date = '\\d{2}';
+
+                    var re = new RegExp(year+'-'+month+'-'+date);
+                    console.log(re);
+                    vm.user = vm.allUser.filter(user => {
+                        if (user.dateadded && user.dateadded.match(re))
+                            return true;
+                        return false;
+                    });
+              }
+          }
 
 	      function openModal(id) {
 			 $(id)
