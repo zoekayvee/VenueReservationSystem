@@ -32,7 +32,7 @@
             console.log('searching?');
             if (vm.searchCategory !== 'eventdate') {
                 vm.events = vm.allEvents.filter(event => {
-                    return event[vm.searchCategory].toLowerCase().includes(vm.searchFilter.toLowerCase());
+                    return event[vm.searchCategory] && event[vm.searchCategory].toLowerCase().includes(vm.searchFilter.toLowerCase());
                 });
             } else {
                 if (vm.searchYear) var year = vm.searchYear;
@@ -47,7 +47,7 @@
                 var re = new RegExp(year+'-'+month+'-'+date);
                 console.log(re);
                 vm.events = vm.allEvents.filter(event => {
-                    if (event.eventdate.match(re))
+                    if (event.eventdate && event.eventdate.match(re))
                         return true;
                     return false;
                 });
